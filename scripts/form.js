@@ -46,6 +46,22 @@ function showEmailError() {
 
 function validateForm(event) {
     // Code that we want to run to validate the entire form (both fields)
+    // Keep track of our validation "state"
+    let formHasErrors = false;
+    if (!nameInput.validity.valid) {
+        // Name input is invalid, show its error and change "state"
+        formHasErrors = true;
+        showNameError();
+    }
+    if (!emailInput.validity.valid) {
+        // Email input is invalid, show its error and change "state"
+        formHasErrors = true;
+        showEmailError();
+    }
+    // Check the "state" to see if the form should be submitted
+    if (formHasErrors) {
+        event.preventDefault();
+    }
 }
 
 // Set up an event listener for each of the fields in the form
