@@ -24,10 +24,24 @@ function showNameError() {
 
 function validateEmail() {
     // Code that will run whenever we want to validate the email field
+    if (emailInput.validity.valid) {
+        // Value is valid, so remove any previous error message
+        emailError.textContent = '';
+    } else {
+        // Value is not valid, so display an error message
+        showEmailError();
+    }
 }
 
 function showEmailError() {
     // Code to display an error message for the email field
+    if (emailInput.validity.valueMissing) {
+        // The field is empty
+        emailError.textContent = 'Please enter your email address';
+    } else if (emailInput.validity.typeMismatch) {
+        // The field contains an invalid email address
+        emailError.textContent = 'Your email address does not appear to be correct';
+    }
 }
 
 function validateForm(event) {
