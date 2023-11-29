@@ -7,10 +7,19 @@ const emailError = document.querySelector('#emailAddress + .field-error');
 
 function validateName() {
   // Code that will run whenever we want to validate the fullName field
+    if (nameInput.validity.valid) {
+        // Value is valid, so remove any previous error message
+        nameError.textContent = '';
+    } else {
+        // Value is not valid, so display an error message
+        showNameError();
+    }
+    
 }
 
 function showNameError() {
     // Code to display an error message for the fullName field
+    nameError.textContent = 'Please enter your name';
 }
 
 function validateEmail() {
